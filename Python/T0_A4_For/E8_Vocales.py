@@ -23,3 +23,4 @@ for caracter in cadena:
 
 print(f"Cantidad de vocales: {vocales}")
 print(f"Cantidad de consonantes: {consonantes}") 
+

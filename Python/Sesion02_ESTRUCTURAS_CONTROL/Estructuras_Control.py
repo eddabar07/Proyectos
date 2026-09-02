@@ -35,7 +35,15 @@ ESTRUCTURAS DE CONTROL
                   codigo for
 
               fuera del ciclo for  
+
         2.- While
+    SINTAXIS: while condicion:
+                  codigo while
+                  codigo while
+                  ....
+                  codigo while
+
+              codigo fuera del while
 """
 print("========== ESTRUCTURAS DE CONTROL ==========")
 
@@ -128,3 +136,41 @@ for i in range (1, tablas + 1):
     for j in range (1, limite + 1):
         result = i * j
         print(f"{i} * {j} = {result}")
+
+print("========== CICLO WHILE ==========")
+
+while False: 
+    print("Cicolo Infinito")
+
+i = 5
+y = 100
+while i <= 10 and y == 100:
+    print(i)
+    i+= 1
+
+print("========== TABLA MULTIPLICAR WHILE ==========")
+i = 1
+while i <= 10:
+    print(f"7 * {i} = {7 * i}")
+    i += 1
+
+print("========== MENU WHILE ==========")
+opcion = ""
+while opcion != "S":
+    print("A) Area Circulo")
+    print("B) Area Rectangulo")
+    print("C) Area Triangulo")
+    print("------------------")
+    print("S) Salir")
+    opcion = input().upper()
+
+    if opcion == "A":
+        print("Elegiste A")
+    elif opcion == "B":
+        print("Elegiste B")
+    elif opcion == "C":
+        print("Elegiste C")
+    elif opcion == "S":
+        break
+    else:
+        print("Opcion Incorrecta")
