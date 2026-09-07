@@ -49,7 +49,13 @@ for i in range(len(cad)):
         vocales += 1
 
 print(vocales)
-
+"""
 for i in range(65000):
-    print(chr(i), end='\n' if (i + 1) % 50 == 0 else ' ')   
-       
+    if i % 50 == 0:
+        print()
+    print(chr(i), end = " ")  
+"""
+
+print("Acceso acadenas por elemento")
+for letra in cad:
+    print(letra)
