@@ -17,6 +17,8 @@ import random
 calificaciones = []
 opcion = ""
 suma = 0
+suma_aprobatorias = 0
+suma_reprobatorias = 0
 
 limite = int(input("¿Cuántas calificaciones deseas generar?: "))
 
@@ -37,28 +39,46 @@ while opcion != "S":
 
     match opcion:
         case "A":
-            for calificacion in calificaciones:
-                suma += calificacion
+            if len(calificaciones) > 0:
 
-            promedio = suma / len(calificaciones)
-            print(f"Tu promedio es de: {promedio}")
+                for calificacion in calificaciones:
+                    suma += calificacion
+
+                promedio = suma / len(calificaciones)
+                print(f"Tu promedio es de: {promedio}")
+
+            else:
+                print("No se genero ninguna calificación")
 
         case "B":
             mayores_promedio = []
             menores_promedio = []
             iguales_promedio = []
 
-            for calificacion in calificaciones:
-                if calificacion > promedio:
-                    mayores_promedio.append(calificacion)
-                elif calificacion < promedio:
-                    menores_promedio.append(calificacion)
-                else:
-                    iguales_promedio.append(calificacion)
+            if len(calificaciones) > 0:
+            
+                for calificacion in calificaciones:
+                    suma += calificacion
+            
+                promedio = suma / len(calificaciones)
+                print(f"Tu promedio es de: {promedio}")
+            
+                for calificacion in calificaciones:
+                    if calificacion > promedio:
+                        mayores_promedio.append(calificacion)
 
-            print(f"Calificaciones MAYORES al promedio: {mayores_promedio}")
-            print(f"Calificaciones MENORES al promedio: {menores_promedio}")
-            print(f"Calificaciones IGUALES al promedio: {menores_promedio}")
+                    elif calificacion < promedio:
+                        menores_promedio.append(calificacion)
+
+                    else:
+                        iguales_promedio.append(calificacion)
+
+                print(f"Calificaciones MAYORES al promedio: {mayores_promedio}")
+                print(f"Calificaciones MENORES al promedio: {menores_promedio}")
+                print(f"Calificaciones IGUALES al promedio: {iguales_promedio}")
+
+            else:
+                print("No se genero ninguna calificación")
 
         case "C":
             aprobatorias = []
@@ -74,7 +94,6 @@ while opcion != "S":
             print(f"Calificaciones reprobatorias: {reprobatorias}")
 
             if len(aprobatorias) > 0:
-                suma_aprobatorias = 0
 
                 for calificacion in aprobatorias:
                     suma_aprobatorias += calificacion
@@ -87,7 +106,6 @@ while opcion != "S":
                 print("No hay calificaciones aprobatorias.")
 
             if len(reprobatorias) > 0:
-                suma_reprobatorias = 0
 
                 for calificacion in reprobatorias:
                     suma_reprobatorias += calificacion
