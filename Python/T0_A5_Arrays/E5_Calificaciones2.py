@@ -18,7 +18,7 @@ calificaciones = []
 opcion = ""
 suma = 0
 
-limite = int(input("¿Cuántas calificaciones deseas ingresar?: "))
+limite = int(input("¿Cuántas calificaciones deseas generar?: "))
 
 for i in range(limite):
     cantidad = calificaciones.append(random.randint(0, 100))
