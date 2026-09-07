@@ -15,6 +15,11 @@ otros vectores)
 import random
 
 calificaciones = []
+mayores_promedio = []
+menores_promedio = []
+iguales_promedio = []
+aprobatorias = []
+reprobatorias = []
 opcion = ""
 suma = 0
 suma_aprobatorias = 0
@@ -51,10 +56,6 @@ while opcion != "S":
                 print("No se genero ninguna calificación")
 
         case "B":
-            mayores_promedio = []
-            menores_promedio = []
-            iguales_promedio = []
-
             if len(calificaciones) > 0:
             
                 for calificacion in calificaciones:
@@ -81,9 +82,6 @@ while opcion != "S":
                 print("No se genero ninguna calificación")
 
         case "C":
-            aprobatorias = []
-            reprobatorias = []
-
             for calificacion in calificaciones:
                 if calificacion >= 70:
                     aprobatorias.append(calificacion)
