@@ -24,7 +24,7 @@ for i in range(limite):
     cantidad = calificaciones.append(random.randint(0, 100))
 
 for j in range(0, len(calificaciones), 10):
-    print(calificaciones[i:i + 10])
+    print(calificaciones[j:j + 10])
 
 while opcion != "S":
     print("""
