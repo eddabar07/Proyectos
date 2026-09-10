@@ -26,26 +26,39 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 class VectorEspecial{
-    Scanner sc = new Scanner(System.in);
+    Scanner sc;
     int datos [];
     int tamaño;
 
     // Constructor
-    public VectorEspecial(){}
+    public VectorEspecial(Scanner sc){
+        this.sc = sc;
+        datos = new int[0];
+        tamaño = 0;
+    }   
 
     // 1.- Crear
     public void crear(int capacidad){
+        if (capacidad < 0) {
+            System.out.println("La capacidad no puede ser negativa.");
+            return;
+        }
         datos = new int[capacidad];
+        tamaño = 0;
     }
 
     // 2.- Llenar
     public void llenar(int capacidad) {
+        if (capacidad > datos.length) {
+            System.out.println("No puedes llenar mas elementos que la capacidad del vector.");
+            return;
+        }
         for (int i = 0; i < capacidad; i++) {
             System.out.print("Ingresa el elemento " + (i + 1) + ": ");
             datos[i] = sc.nextInt();
             tamaño++;
         }
-    }
+}
 
     // 3.- Obtener la posicion del INICIO
     public void obtenerPosicionInicio(){
@@ -89,24 +102,31 @@ class VectorEspecial{
 
     // 8.- Aumentar el tamaño del arreglo
     public void aumentarTamaño(int incremento){
+        if (incremento <= 0) {
+            System.out.println("Cantidad invalida.");
+            return;
+        }
+
         int nuevaCapacidad = datos.length + incremento;
         int aumento [] = new int[nuevaCapacidad];
+
         System.arraycopy(datos, 0, aumento, 0, datos.length);
         datos = aumento;
-        
         System.out.println("El nuevo tamaño del arreglo es de:" + datos.length + " indices");
     }
 
     // 9.- Disminuir el tamaño del arreglo
     public void disminuirTamaño(int decremento){
+        if (decremento < 0) {
+            System.out.println("Cantidad invalida.");
+            return;
+        }
         int nuevaCapacidad = datos.length - decremento;
-        int disminucion [] = Arrays.copyOfRange(datos, 0, nuevaCapacidad);
-
         if (nuevaCapacidad < 0) {
             System.out.println("No se puede disminuir esa cantidad.");
             return;
         }
-
+        int disminucion [] = Arrays.copyOfRange(datos, 0, nuevaCapacidad);
         datos = disminucion;
         if (tamaño > datos.length) {
             tamaño = datos.length;
@@ -238,10 +258,10 @@ class VectorEspecial{
     }
 }
 
-public class Problema2VectorEspecial {
+public class VectorMutable {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        VectorEspecial ve = new VectorEspecial();
+        VectorEspecial ve = new VectorEspecial(sc);
         int opcion;
 
         do{
