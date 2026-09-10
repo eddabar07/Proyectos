@@ -1,3 +1,4 @@
+package T1_A2_Vector_TDA;
 /* 
 Crear nuesra propia implementacion de VECTOR MUTABLE
 
@@ -18,6 +19,7 @@ Crear nuesra propia implementacion de VECTOR MUTABLE
 15 -> Eliminar elemento del final
 16 -> Invertir el vector
 17 -> Buscar elemento
+0 -> Salir del Programa
 */
 
 import java.util.Arrays;
@@ -236,7 +238,7 @@ class VectorEspecial{
     }
 }
 
-public class ExtensionVectorEspecial {
+public class Problema2VectorEspecial {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         VectorEspecial ve = new VectorEspecial();
