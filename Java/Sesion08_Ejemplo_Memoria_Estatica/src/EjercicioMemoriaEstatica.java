@@ -374,7 +374,7 @@ class RegistroAspirantes{
     
 }
 
-public class EjercicioCadenaEspecial {
+public class EjercicioMemoriaEstatica {
     public static void main(String[] args) {
          Scanner sc = new Scanner(System.in);
         RegistroAspirantes registro = new RegistroAspirantes();
