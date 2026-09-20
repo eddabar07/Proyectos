@@ -376,9 +376,9 @@ class RegistroAspirantes{
 
 public class EjercicioMemoriaEstatica {
     public static void main(String[] args) {
-         Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         RegistroAspirantes registro = new RegistroAspirantes();
-        int opcion = -1;
+        int opcion;
 
         do{
             System.out.println("\n=========== MENU ==============");
