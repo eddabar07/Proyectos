@@ -104,44 +104,31 @@ public class Aspirantes {
         String texto = "";
 
         texto += "Nombre: " + nombreCompleto[0] + " " + nombreCompleto[1] + " "
-        + nombreCompleto[2];
-
-        texto += "\nEdad: " + edad;
-
-        texto += "\n";
+        + nombreCompleto[2] + "\n";
+        
+        texto += "Edad: " + edad + "\n";
 
         texto += "\nDireccion: \n" + 
         "Calle: " + direccion[0] + 
         "\nNúmero: " + direccion[1] + 
         "\nColonia: " + direccion[2] +
         "\nCódigo Postal: " + direccion[3] + 
-        "\nCiudad: " + direccion[4];
+        "\nCiudad: " + direccion[4] + "\n";
 
-        texto += "\n";
+        texto += "\nTelefono: " + telefono + "\n";
 
-        texto += "\nTelefono: " + telefono;
-
-        texto += "\n";
-
-        texto += "\nRedes sociales:";
-        if (redesSociales != null && redesSociales.length > 0){
+        texto += "\nRedes sociales:" + "\n";
             for (int i = 0; i < redesSociales.length; i++) {
-                texto += "\n" + redesSociales[i][0] + ": " + redesSociales[i][1];
+                texto += redesSociales[i][0] + ": " + redesSociales[i][1] + "\n";
             }
-        }
-        else{
-            texto += "Ninguna";
-        }
-
-        texto += "\n";
-
-        texto += "\nCarrera de interes: " + carreraInteres;
-
-        texto += "\n";
-
-        texto += "\nEscuela de procedencia: " + escuelaProcedencia;
-        texto += "\nBachillerato: " + bachillerato;
+            texto += "\n";
+        
+        texto += "Carrera de interes: " + carreraInteres + "\n";
+        texto += "Escuela de procedencia: " + escuelaProcedencia + "\n";
+        texto += "Bachillerato: " + bachillerato;
 
         return texto;
     }
+
+
 }
