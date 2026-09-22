@@ -1,31 +1,16 @@
 public class Aspirantes {
     // Declaracion de variables de instancia
-    private String [] nombreCompleto;
+    private String[] nombreCompleto;
     private int edad;
-    private int tamaño;
-    private int folio = 1;
-    private Object [] direccion;
+    private int folio;
+    private String[] direccion;
     private String telefono;
-    private String [][] redesSociales;
+    private String[][] redesSociales;
     private String carreraInteres;
     private String escuelaProcedencia;
     private String bachillerato;
 
-    // Metodo Constructor
-    public Aspirantes(String[] nombreCompleto, int edad, int tamaño, int folio, Object[] direccion, String telefono, String[][] redesSociales,
-            String carreraInteres, String escuelaProcedencia, String bachillerato) {
-        this.nombreCompleto = nombreCompleto;
-        this.edad = edad;
-        this.tamaño = tamaño;
-        this.folio = folio;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.redesSociales = redesSociales;
-        this.carreraInteres = carreraInteres;
-        this.escuelaProcedencia = escuelaProcedencia;
-        this.bachillerato = bachillerato;
-    }
-
+    // Constructor
     public Aspirantes(){}
 
     // Getters and Setters
@@ -45,14 +30,6 @@ public class Aspirantes {
         this.edad = edad;
     }
 
-    public int getTamaño(){
-        return tamaño;
-    }
-
-    public void setTamaño(int tamaño){
-        this.tamaño = tamaño;
-    }
-
     public int getFolio(){
         return folio;
     }
@@ -61,11 +38,11 @@ public class Aspirantes {
         this.folio = folio;
     }
 
-    public Object[] getDireccion() {
+    public String[] getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(Object[] direccion) {
+    public void setDireccion(String[] direccion) {
         this.direccion = direccion;
     }
 
@@ -109,38 +86,34 @@ public class Aspirantes {
         this.bachillerato = bachillerato;
     }
 
-    @Override
-    public String toString() {
-        String texto = "";
-
-        texto += "Folio: " + String.format("%04d", folio) + "\n";
-
-        texto += "Nombre: " + nombreCompleto[0] + " " + nombreCompleto[1] + " "
-        + nombreCompleto[2] + "\n";
-        
-        texto += "Edad: " + edad + "\n";
-
-        texto += "\nDireccion: \n" + 
-        "Calle: " + direccion[0] + 
-        "\nNúmero: " + direccion[1] + 
-        "\nColonia: " + direccion[2] +
-        "\nCódigo Postal: " + direccion[3] + 
-        "\nCiudad: " + direccion[4] + "\n";
-
-        texto += "\nTelefono: " + telefono + "\n";
-
-        texto += "\nRedes sociales:" + "\n";
-            for (int i = 0; i < redesSociales.length; i++) {
-                texto += redesSociales[i][0] + ": " + redesSociales[i][1] + "\n";
-            }
-            texto += "\n";
-        
-        texto += "Carrera de interes: " + carreraInteres + "\n";
-        texto += "Escuela de procedencia: " + escuelaProcedencia + "\n";
-        texto += "Bachillerato: " + bachillerato;
-
-        return texto;
+    // Obtener nombre completo legible
+    public String getNombreFormateado() {
+        return nombreCompleto[0] + " " + nombreCompleto[1] + " " + nombreCompleto[2];
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("-------------------------------------------\n");
+        sb.append("Folio: ").append(String.format("%04d", folio)).append("\n");
+        sb.append("Nombre: ").append(getNombreFormateado()).append("\n");
+        sb.append("Edad: ").append(edad).append("\n");
 
+        sb.append("Dirección: Calle ").append(direccion[0]).append(" #").append(direccion[1])
+          .append(", Col. ").append(direccion[2]).append(", C.P. ").append(direccion[3])
+          .append(", ").append(direccion[4]).append("\n");
+
+        sb.append("Teléfono: ").append(telefono).append("\n");
+
+        sb.append("Redes sociales:\n");
+        for (String[] red : redesSociales) {
+            sb.append("  - ").append(red[0]).append(": ").append(red[1]).append("\n");
+        }
+        
+        sb.append("Carrera de interés: ").append(carreraInteres).append("\n");
+        sb.append("Escuela de procedencia: ").append(escuelaProcedencia).append("\n");
+        sb.append("Bachillerato: ").append(bachillerato).append("\n");
+        sb.append("-------------------------------------------");
+        return sb.toString();
+    }
 }

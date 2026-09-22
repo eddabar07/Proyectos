@@ -29,7 +29,6 @@ public class Prueba {
             switch (opcion) {
                 case 1:
                     registro.añadirAspirante();
-                    System.out.println("Aspirante Registrado Correctamente");
                     break;
                 
                 case 2:
@@ -53,9 +52,15 @@ public class Prueba {
                     registro.eliminarAspiranteFolio();
                     System.out.println();
                     break;
+
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    System.exit(0);
+                    break;
                 
                 default:
                     System.out.println("Opción Incorrecta");
+                    break;
             }
         } while (opcion != 0);
         sc.close();

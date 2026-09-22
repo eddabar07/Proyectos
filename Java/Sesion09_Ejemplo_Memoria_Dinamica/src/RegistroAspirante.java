@@ -2,135 +2,109 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class RegistroAspirante {
-    // Instanciar objeto de clase Datos Aspirantes
-    Aspirantes a = new Aspirantes();
-    DatosAspirantes da = new DatosAspirantes();
-    Scanner sc = new Scanner(System.in);
+    private ArrayList<Aspirantes> listaAspirante = new ArrayList<>();
+    private DatosAspirantes da = new DatosAspirantes();
+    private Scanner sc = new Scanner(System.in);
 
-    // Crear una lista de tipo Aspirante
-    ArrayList <Aspirantes> listaAspirante = new ArrayList<>();
 
-    // Generar folio Aspirante
-    public Aspirantes folAspirantes(){
-        int folioAsp = listaAspirante.size() + 1;
-
-        a.setFolio(folioAsp);
-        return a;
-    }
-
-    // Añadir aspirante a la lista
+    // Añadir aspirante
     public void añadirAspirante(){
-        listaAspirante.add(da.obtener());
+        int nuevoFolio = listaAspirante.size() + 1;
+        Aspirantes nuevoAspirante = da.capturarDatos(nuevoFolio);
+        listaAspirante.add(nuevoAspirante);
+        System.out.println("\nAspirante registrado correctamente con el Folio: " + String.format("%04d", nuevoFolio));
     }
-
-    // Eliminar aspirante 
-    public void eliminarAspiranteNombre(){
-        // Validar si la lista no esta vacia
-        if (listaAspirante.isEmpty()){
-            System.out.println("No hay aspirantes registrados");
-            return;
-        }
-
-        // Solicitar nombre del aspirante
-            System.out.print("Nombre del Aspirante: ");
-            String name = sc.nextLine();
-            System.out.println();
-
-        // Recorrer lista
-        for (int i = 0; i < listaAspirante.size(); i++) {
-            // Validar si existe y eliminarlo
-            if (listaAspirante.get(i).getNombreCompleto()[2].equalsIgnoreCase(name)) {
-                listaAspirante.remove(i);
-                System.out.println("Aspirante eliminado.");
-                return;
-            }
-        }
-        System.out.println("Aspirante no encontrado.");
-    }
-
-    public void eliminarAspiranteFolio(){
-        // Validar si la lista no esta vacia
-        if (listaAspirante.isEmpty()){
-            System.out.println("No hay aspirantes registrados");
-            return;
-        }
-
-        // Solicitar nombre del aspirante
-            System.out.print("Folio del Aspirante: ");
-            int folioAspi = sc.nextInt();
-            System.out.println();
-
-        // Recorrer lista
-        for (int i = 0; i < listaAspirante.size(); i++) {
-            // Validar si existe y eliminarlo
-            if (listaAspirante.get(i).getFolio() == folioAspi) {
-                listaAspirante.remove(i);
-                System.out.println("Aspirante eliminado.");
-                return;
-            }
-        }
-        System.out.println("Aspirante no encontrado.");
-    }
-
-    // Buscar aspirante
+    
+    // Buscar aspirante por nombre
     public void buscarAspiranteNombre(){
-        // Validar si la lista no esta vacia
         if (listaAspirante.isEmpty()){
-            System.out.println("No hay aspirantes registrados");
+            System.out.println("No hay aspirantes regitrados");
             return;
         }
 
-        // Solicitar nombre del aspirante
-            System.out.print("Nombre del Aspirante: ");
-            String name = sc.nextLine();
-            System.out.println();
+        System.out.println("Nombre o Apellido del Aspirante: ");
+        String nombre = sc.nextLine().toLowerCase();
 
-        // Recorrer lista
-        for (int i = 0; i < listaAspirante.size(); i++) {
-            // Validar si existe y mostrar el aspirante
-            if (listaAspirante.get(i).getNombreCompleto()[2].equalsIgnoreCase(name)) {
-                System.out.println("Aspirante encontrado:");
-                System.out.println(listaAspirante.get(i));
+        for (Aspirantes asp : listaAspirante){
+            if (asp.getNombreFormateado().toLowerCase().contains(nombre)){
+                System.out.println("\nAspirante Encontrado");
+                System.out.println(asp);
                 return;
             }
         }
-        System.out.println("Aspirante no encontrado.");
     }
 
+    // Buscar aspirante por folio
     public void buscarAspiranteFolio(){
-        // Validar si la lista no esta vacia
         if (listaAspirante.isEmpty()){
-            System.out.println("No hay aspirantes registrados");
+            System.out.println("No hay Aspirantes regitrados");
             return;
         }
 
-        // Solicitar nombre del aspirante
-            System.out.print("Folio del Aspirante: ");
-            int folio = sc.nextInt();
-            System.out.println();
+        System.out.println("Folio del Aspirante: ");
+        int folio = sc.nextInt();
+        sc.nextLine();
 
-        // Recorrer lista
-        for (int i = 0; i < listaAspirante.size(); i++) {
-            // Validar si existe y mostrar el aspirante
-            if (listaAspirante.get(i).getFolio() == folio) {
-                System.out.println("Aspirante encontrado:");
-                System.out.println(listaAspirante.get(i));
+        for (Aspirantes asp : listaAspirante){
+            if (asp.getFolio() == folio){
+                System.out.println("\nAspirante Encontrado");
+                System.out.println(asp);
                 return;
             }
         }
-        System.out.println("Aspirante no encontrado.");
+    }
+
+    // Eliminar aspirante por nombre
+    public void eliminarAspiranteNombre(){
+        if (listaAspirante.isEmpty()){
+            System.out.println("No hay Aspirantes regitrados");
+            return;
+        }
+
+        System.out.println("Nombre o Apellido del Aspirante: ");
+        String nombre = sc.nextLine().toLowerCase();
+
+        for (int i = 0; i < listaAspirante.size(); i++){
+            if (listaAspirante.get(i).getNombreFormateado().toLowerCase().contains(nombre)){
+                listaAspirante.remove(i);
+                System.out.println("Aspirante Eliminado Correctamente");
+                return;
+            }
+        }
+        System.out.println("Aspirante no encontrado");
+    }
+
+    // Eliminar aspirante
+    public void eliminarAspiranteFolio(){
+        if (listaAspirante.isEmpty()){
+            System.out.println("No hay Aspirantes regitrados");
+            return;
+        }
+
+        System.out.println("Folio del Aspirante: ");
+        int folio = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < listaAspirante.size(); i++){
+            if (listaAspirante.get(i).getFolio() == folio){
+                listaAspirante.remove(i);
+                System.out.println("Aspirante Eliminado Correctamente");
+                return;
+            }
+        }
+        System.out.println("Aspirante no encontrado");
     }
 
     // Mostrar listado de aspirantes
     public void mostrarLista(){
-        if (listaAspirante.isEmpty()) {
-            System.out.println("No hay aspirantes registrados");
+        if (listaAspirante.isEmpty()){
+            System.out.println("No hay Aspirantes regitrados");
             return;
-        } 
-        
-        System.out.println("========== Listado de Aspirantes ==========");
-        for (int i = 0; i < listaAspirante.size(); i++) {
-            System.out.println(listaAspirante.get(i));
+        }
+
+        System.out.println("\n========== LISTA DE ASPIRANTES ==========");
+        for (Aspirantes asp : listaAspirante){
+            System.out.println(asp);
         }
     }
 }
