@@ -3,6 +3,7 @@ public class Aspirantes {
     private String [] nombreCompleto;
     private int edad;
     private int tamaño;
+    private int folio = 1;
     private Object [] direccion;
     private String telefono;
     private String [][] redesSociales;
@@ -11,11 +12,12 @@ public class Aspirantes {
     private String bachillerato;
 
     // Metodo Constructor
-    public Aspirantes(String[] nombreCompleto, int edad, int tamaño, Object[] direccion, String telefono, String[][] redesSociales,
+    public Aspirantes(String[] nombreCompleto, int edad, int tamaño, int folio, Object[] direccion, String telefono, String[][] redesSociales,
             String carreraInteres, String escuelaProcedencia, String bachillerato) {
         this.nombreCompleto = nombreCompleto;
         this.edad = edad;
         this.tamaño = tamaño;
+        this.folio = folio;
         this.direccion = direccion;
         this.telefono = telefono;
         this.redesSociales = redesSociales;
@@ -49,6 +51,14 @@ public class Aspirantes {
 
     public void setTamaño(int tamaño){
         this.tamaño = tamaño;
+    }
+
+    public int getFolio(){
+        return folio;
+    }
+
+    public void setFolio(int folio){
+        this.folio = folio;
     }
 
     public Object[] getDireccion() {
@@ -102,6 +112,8 @@ public class Aspirantes {
     @Override
     public String toString() {
         String texto = "";
+
+        texto += "Folio: " + String.format("%04d", folio) + "\n";
 
         texto += "Nombre: " + nombreCompleto[0] + " " + nombreCompleto[1] + " "
         + nombreCompleto[2] + "\n";

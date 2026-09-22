@@ -23,7 +23,6 @@ public class DatosAspirantes {
     private Object dire[];
     private String redes [][];
     String carreras [];
-    
 
     // Solicitar el nombre del aspirante
     public Aspirantes nombreAspirante(){
@@ -175,6 +174,10 @@ public class DatosAspirantes {
 
     // Obtener datos de Aspirante
     public Aspirantes obtener(){
+        RegistroAspirante ra = new RegistroAspirante();
+        System.out.println();
+        ra.folAspirantes();
+        System.out.println();
         nombreAspirante();
         edadAspirante();
         System.out.println();
